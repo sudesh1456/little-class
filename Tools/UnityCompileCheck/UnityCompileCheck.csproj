@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Compiles Assets/**/*.cs against the installed editor's DLLs without launching Unity.
+      dotnet build Tools/UnityCompileCheck
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <UnityDir Condition="'$(UnityDir)' == ''">I:\Unity\Editors\6000.3.25f1</UnityDir>
+    <UnityManaged>$(UnityDir)\Editor\Data\Managed</UnityManaged>
+    <DefineConstants>$(DefineConstants);UNITY_EDITOR;UNITY_6000_0_OR_NEWER</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Assets\Scripts\**\*.cs" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.IMGUIModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.InputLegacyModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.AudioModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.AndroidJNIModule.dll" Private="false" />
+    <Reference Include="$(UnityDir)\Editor\Data\Resources\PackageManager\ProjectTemplates\libcache\com.unity.template.2d-cross-platform-2d-6.1.6\ScriptAssemblies\UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.UIElementsModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.SharedInternalsModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.PropertiesModule.dll" Private="false" />
+    <Reference Include="$(UnityManaged)\UnityEngine\UnityEngine.PhysicsModule.dll" Private="false" />
+  </ItemGroup>
+
+</Project>
